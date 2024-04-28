@@ -1,7 +1,5 @@
-import path from "path";
 import express from "express";
 import dovenv from "dotenv";
-import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 import connetMongoDB from "./config/db.js";
@@ -33,6 +31,8 @@ app.use("/api/users", userRoutes);
 
 app.use(errorHandler);
 app.use(notFound);
+
+// console.log("MongoDB URI:", process.env.MONGO_URL);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`The server started on PORT ${PORT}`));
